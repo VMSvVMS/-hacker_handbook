@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hackers Handbook</title>
+</head>
+<body>
+    <ul>
+        <h1><b><li>WHAT IS A CYBER ATTACK?</li></b></h1>
+    </ul>
+        <p><b>A cyber attack is an attempt by cybercriminals, hackers or other digital adversaries to access a computer network or system, usually for the purpose of altering, stealing, destroying or exposing information.
+
+            Cyberattacks can target a wide range of victims from individual users to enterprises or even governments. When targeting businesses or other organizations, the hacker’s goal is usually to access sensitive and valuable company resources, such as intellectual property (IP), customer data or payment details.</b></p>
+        
+        <u><h2>Types of most commen cyber attacks</h2></u>
+            <ol>
+                <h1><li>Malware</li></h1>
+                <p>
+                Malware — or malicious software — is any program or code that is created with the intent to do harm to a computer, network or server. Malware is the most common type of cyberattack, mostly because this term encompasses many subsets such as ransomware, trojans, spyware, viruses, worms, keyloggers, bots, cryptojacking, and any other type of malware attack that leverages software in a malicious way.
+                </p>
+                <img src="./Screenshot 2024-04-09 085256.png" alt="Malware">
+
+                <h3>Types of malware:</h3>
+
+                <p><b>Botnets</b> – <br>
+                    Short for “robot network,” these are networks of infected computers under the control of single attacking parties using command-and-control servers. Botnets are highly versatile and adaptable, able to maintain resilience through redundant servers and by using infected computers to relay traffic. Botnets are often the armies behind today's
+                </p>
+                <p><b>distributed denial-of-service (DDoS) attacks.</b><br>
+                    Cryptojacking – is malicious cryptomining (the process of using computing power to verify transactions on a blockchain network and earning cryptocurrency for providing that service) that happens when cybercriminals hack into both business and personal computers, laptops, and mobile devices to install software.
+                </p>
+                <p><b>Ransomware</b><br>
+                    Is a criminal business model that uses malicious software to hold valuable files, data or information for ransom. Victims of a ransomware attack may have their operations severely degraded or shut down entirely.
+                </p>
+                <p><b>Remote Administration Tools (RATs)</b><br>
+                    Software that allows a remote operator to control a system. These tools were originally built for legitimate use, but are now used by threat actors. RATs enable administrative control, allowing an attacker to do almost anything on an infected computer. They are difficult to detect, as they don’t typically show up in lists of running programs or tasks, and their actions are often mistaken for the actions of legitimate programs.
+                </p>
+                <br>
+               <center> <b><a href="https://en.wikipedia.org/wiki/Malware">For more information</a></b></center>
+               <hr>
+
+               <h1><li>SQL injection</li></h1>
+                <h3>Ramifications of Successful SQL Injection Attacks</h3>
+                <ol>
+                    <li><b>Authentication Bypass:</b> This attack allows an attacker to log on to an application, potentially with administrative privileges, without supplying a valid username and password.</li>
+                    <li><b>Information Disclosure:</b>This attack allows an attacker to obtain, either directly or indirectly, sensitive information in a database.</li>
+                    <li><b>Compromised Data Integrity:</b>This attack involves the alteration of the contents of a database. An attacker could use this attack to deface a web page or more likely to insert malicious content into otherwise innocuous web pages. This technique has been demonstrated via the attacks that are described in Mass exploits with SQL Injection at the SANS Internet Storm Center.</li>
+                    <li><b>Remote Command Execution:</b> Performing command execution through a database can allow an attacker to compromise the host operating system. These attacks often leverage an existing, predefined stored procedure for host operating system command execution. The most recognized variety of this attack uses the xp_cmdshell stored procedure that is common to Microsoft SQL Server installations or leverages the ability to create an external procedure call on Oracle databases.</li>
+                </ol>
+                <br>
+                <img src="./1694103351126.jpeg" alt="sql attack">
+                <h3>Defending Against SQL Injection Attacks</h3>
+                <ul>
+                    <b><li>Blacklisting and Whitelisting</li></b><br>
+                    <p>
+                        Within an application itself, there are two approaches to input validation that can defend against SQL injection attacks: blacklisting and whitelisting. With blacklisting, specific, known malicious characters are removed from or replaced in user input. Although this approach is often implemented, largely due to the ease at which it can be accomplished, it is not effective when compared to whitelisting. Blacklisting can fail to properly handle complex obfuscation, which could allow an attacker to subvert filters and potentially inject SQL statements. This failure often occurs as a result of evolving attack techniques and filters that are not comprehensive or not implemented correctly.
+                    </p>
+                    <p>
+                        Alternately, whitelisting examines each piece of user input against a list of permitted characters. This approach is more effective in mitigating the risk of SQL injection, as it is more restrictive concerning which types of input are allowed. Well-implemented whitelisting should examine each piece of user-supplied data against the expected data format.
+                    </p>
+                    <p>
+                        The application must act deterministically when it receives invalid characters from a user. Different levels of response may be appropriate based on the circumstances in which the unexpected data is being processed and the effect it could have. For example, applications should patently reject users that submit two dash characters (--) or a semi-colon character (;) as part of the login name or password, and a high-severity alert should be sent to application administrators. However, this somewhat harsh response may not be appropriate when an application receives a single apostrophe character as part of a street address that is submitted by an authenticated user who is entering package shipping information. Nonetheless, the application should behave as intended, and a notification should be sent to application administrators if the submitted apostrophe was not handled properly by the application.
+                    </p>
+                    <p>
+                        At first glance, it might appear that these data validation and sanitization techniques could be implemented in client-side JavaScript to be run in a user's browser. From a security perspective, however, it must be assumed that any and all types of data will originate from a user's browser, regardless of the client-imposed safeguards that are in place. Nonetheless, client-side data validation techniques can enhance application usability.
+                    </p>
+                    <br>
+                    <b><li>Fortifying SQL Statements</li></b><br>
+                    <p>
+                        Parameterized queries in ASP.NET, prepared statements in Java, or similar techniques in other languages should be used comprehensively in addition to strict input validation. Each of these techniques performs all required escaping of dangerous characters before the SQL statement is passed to the underlying database system. The following example depicts the use of prepared statements in Java and illustrates how SQL statements are built without user-supplied data and then augmented with the data in such a manner that the structure and intent of the SQL statement cannot be altered:
+                    </p>
+                    <p>
+                        <i>
+                            String sql = "select * from Users where (username = ? and password = ?)"; 
+                            PreparedStatement preparedStmt = connection.prepareStatement(sql); 
+                            preparedStmt.setString(1, submittedUsername); 
+                            preparedStmt.setString(2, submittedPassword); 
+                            results = preparedStmt.executeQuery(); 
+                        </i>
+                    </p>
+                    <p>
+                        In addition to ensuring that the intent of SQL statements cannot be altered by user-supplied data, applications should also catch and remove all SQL-generated error messages before they reach an end user. Although this safeguard may hinder a developer's ability to troubleshooting an application error, which can easily be overcome with additional backend logging, the presentation of SQL errors will greatly aid attackers in successfully exploiting a SQL injection vulnerability. The following example is an overly verbose error message:
+                    </p>
+                    <p>
+                        <i>
+                            com.mysql.jdbc.exceptions.MySQLSyntaxErrorException: Table 'sqlInjectionTest.test' doesn't exist 
+	                        at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:936) 
+	                        at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:2985) 
+	                        at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1631) 
+	                        at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:1723) 
+	                        at com.mysql.jdbc.Connection.execSQL(Connection.java:3277) 
+	                        at com.mysql.jdbc.Connection.execSQL(Connection.java:3206) 
+	                        at com.mysql.jdbc.Statement.executeQuery(Statement.java:1232) 
+	                        at sqlInjectionBefore.main(before.java:28) 
+                        </i>
+                    </p>
+                    <center><a href="https://en.wikipedia.org/wiki/SQL_injection">For more details</a></center>
+                </ul>
+                <hr>
+                <h1><li>DNS Tunneling</li></h1>
+                <img src="./644cd0fd955aee02ec7135fb_How Does DNS Tunneling Works.jpg" alt="dns tunneling">
+                <br>
+                <p>
+                    DNS tunneling utilizes the DNS protocol to communicate non-DNS traffic over port 53. It sends HTTP and other protocol traffic over DNS. There are various, legitimate reasons to utilize DNS tunneling. However, there are also malicious reasons to use DNS Tunneling VPN services. They can be used to disguise outbound traffic as DNS, concealing data that is typically shared through an internet connection. For malicious use, DNS requests are manipulated to exfiltrate data from a compromised system to the attacker’s infrastructure. It can also be used for command and control callbacks from the attacker’s infrastructure to a compromised system.
+                </p>
+                <h3>Is it a theoretical threat?</h3>
+                <p>
+                    No. Since 2011, security researchers have published several papers and blogs on attacks (e.g. “Morto”, “Feederbot”) that use DNS tunneling to add stealth to command & control (C2) callbacks. Since 2016, “FrameworkPOS” — a popular malicious payload for point-of-sale systems — has used DNS tunneling to exfiltrate credit card data. How does it work? Attackers know that enterprise network defenses allow DNS traffic over port 53. So DNS requests are manipulated to exfiltrate data from a compromised system to the attacker’s infrastructure. And in some cases, DNS responses are manipulated for C2 callbacks from the attacker’s infrastructure to a compromised system. The next page provides a step-by-step explanation.
+                </p>
+                <h3>What are examples of DNS abuse?</h3>
+                <ul>
+                    <li><b>Data Exfiltration-</b>attackers encode data in outbound DNS requests to specialized infrastructure. These queries are decoded and joined to reconstruct the exfiltrated data.</li>
+                    <li><b>Command and Control Callbacks-</b>Attackers send commands in DNS responses to compromised systems, allowing remote management of an infected device.</li>
+                    <li><b>Guest WiFi Abuse-</b>Users install a free DNS tunneling tool, such as Iodine or Tunnel Guru, to bypass the network authorization infrastructure in order to obtain free internet access in hotels and airports </li>
+                    
+                </ul>
+            </ol>
+</body>
+</html>
